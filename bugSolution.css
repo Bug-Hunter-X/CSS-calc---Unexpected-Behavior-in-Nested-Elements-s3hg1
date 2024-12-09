@@ -1,0 +1,15 @@
+To solve the issue of unexpected results from the `calc()` function, one should ensure that the parent element's size is explicitly defined before using `calc()` in a nested element to avoid incorrect unit calculations.  Consider using explicit pixel values or a flexible box model to guarantee accurate calculations.
+
+Here's an example of a corrected implementation:
+```css
+.parent {
+  width: 500px; /* Explicit width for parent */
+  display: flex;
+}
+
+.child {
+  width: calc(50% - 10px);
+  /*Calculation more reliable since parent's size is known */
+}
+```
+Alternatively, restructure your layout to avoid the nested `calc()` calculation, or switch to using `vw` or `vh` units if relative sizing to the viewport is the intention.
